@@ -1,0 +1,127 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Gestión de Productos</h2>
+  <a routerLink="/dashboard" class="btn btn-secondary">Volver al Dashboard</a>
+  <div class="row">
+    <div class="col-md-4">
+      <form (ngSubmit)="addOrUpdateProduct()" class="mb-4">
+        <div class="mb-3">
+          <label for="id" class="form-label">ID</label>
+          <input
+            type="number"
+            class="form-control"
+            id="id"
+            [(ngModel)]="id"
+            name="id"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            [(ngModel)]="name"
+            name="name"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Descripción</label>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            [(ngModel)]="description"
+            name="description"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="price" class="form-label">Precio</label>
+          <input
+            type="number"
+            class="form-control"
+            id="price"
+            [(ngModel)]="price"
+            name="price"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="stock" class="form-label">Stock</label>
+          <input
+            type="text"
+            class="form-control"
+            id="stock"
+            [(ngModel)]="stock"
+            name="stock"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="stock" class="form-label">Proveedor</label>
+          <input
+            type="text"
+            class="form-control"
+            id="proveedor"
+            [(ngModel)]="proveedor"
+            name="proveedor"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">
+          {{ isEditing ? "Actualizar Producto" : "Agregar Producto" }}
+        </button>
+
+        <button type="button" class="btn btn-secondary" (click)="resetForm()">
+          Cancelar
+        </button>
+      </form>
+    </div>
+    <div class="col-md-8">
+      <h3 class="mb-4">Lista de Productos</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Proveedor</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.stock }}</td>
+            <td>{{ product.proveedor }}</td>
+            <td>
+              <div class="d-flex">
+                <button
+                  class="btn btn-warning btn-sm me-2"
+                  (click)="editProduct(product)"
+                >
+                  Editar
+                </button>
+                <button
+                  class="btn btn-danger btn-sm"
+                  (click)="deleteProduct(product.id)"
+                >
+                  Eliminar
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

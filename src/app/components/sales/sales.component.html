@@ -1,0 +1,77 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Ventas</h2>
+  <a routerLink="/dashboard" class="btn btn-secondary">Volver al Dashboard</a>
+  <div class="row">
+    <div class="col-md-4">
+      <form (ngSubmit)="addToCart()" class="mb-4">
+        <div class="mb-3">
+          <label for="searchTerm" class="form-label">Buscar Producto</label>
+          <input type="text" class="form-control" id="searchTerm" [(ngModel)]="searchTerm" name="searchTerm" (input)="searchProduct()">
+        </div>
+        <div *ngIf="selectedProduct">
+          <p><strong>Producto:</strong> {{ selectedProduct.name }}</p>
+          <p><strong>Descripción:</strong> {{ selectedProduct.description }}</p>
+          <p><strong>Precio:</strong> {{ selectedProduct.price }}</p>
+          <p><strong>Stock:</strong> {{ selectedProduct.stock }}</p>
+          <div class="mb-3">
+            <label for="quantity" class="form-label">Cantidad</label>
+            <input type="number" class="form-control" id="quantity" [(ngModel)]="quantity" name="quantity" min="1" [max]="selectedProduct.stock" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Agregar al Carrito</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-8">
+      <h3 class="mb-4">Productos a Comprar</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Precio Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cart">
+            <td>{{ item.product.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.product.price }}</td>
+            <td>{{ item.product.price * item.quantity }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-success" (click)="checkout()">Pagar</button>
+    </div>
+  </div>
+
+  <div *ngIf="showSummary" class="mt-4">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Resumen de Compra</h4>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Precio Unitario</th>
+              <th>Precio Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of purchaseSummary">
+              <td>{{ item.product.name }}</td>
+              <td>{{ item.quantity }}</td>
+              <td>{{ item.product.price }}</td>
+              <td>{{ item.product.price * item.quantity }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="text-right"><strong>Total Pagado:</strong> {{ totalPaid | currency }}</p>
+        <button class="btn btn-info" (click)="printSummary()">Imprimir</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

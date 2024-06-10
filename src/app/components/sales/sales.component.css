@@ -1,0 +1,46 @@
+.container {
+  max-width: 1200px;
+}
+
+h2, h3, h4 {
+  color: #343a40;
+}
+
+form {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+  margin-top: 20px;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.btn {
+  margin-top: 10px;
+}
+
+.text-right {
+  text-align: right;
+}
+
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}

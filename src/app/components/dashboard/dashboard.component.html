@@ -1,0 +1,43 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Dashboard</h2>
+  <a routerLink="/login" class="btn btn-secondary mb-4">SALIR</a>
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Total de Productos</h5>
+          <p class="card-text">{{ totalProducts }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Total de Stock</h5>
+          <p class="card-text">{{ totalStock }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 mb-2">
+      <a routerLink="/producto" class="btn btn-primary btn-block">Gestión de Productos</a>
+    </div>
+    <div class="col-md-6 mb-2">
+      <a routerLink="/venta" class="btn btn-secondary btn-block">Ventas</a>
+    </div>
+
+    <div class="col-md-6 mb-2">
+      <a routerLink="/cliente" class="btn btn-info btn-block">Clientes</a>
+    </div>
+
+    <div class="col-md-6 mb-2">
+      <a routerLink="/proveedor" class="btn btn-info btn-block">Proveedores</a>
+    </div>
+  </div>
+</div>
+
+
+
+
+
